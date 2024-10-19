@@ -1,0 +1,20 @@
+# Java target directories
+**/target/
+**/*.class
+**/*.jar
+**/*.war
+
+# IDE files
+.idea/
+*.iml
+*.class
+*.log
+
+# Environment files
+*.env
+
+# Other common ignore patterns
+.DS_Store
+*.log
+
+logs/

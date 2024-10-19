@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lateautumncoder.rbauth.domain.mapper.UserDOMapper">
+    <resultMap id="BaseResultMap" type="com.lateautumncoder.rbauth.domain.dataobject.UserDO">
+        <id column="id" jdbcType="BIGINT" property="id"></id>
+        <result column="username" jdbcType="VARCHAR" property="username"></result>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"></result>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"></result>
+    </resultMap>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select *
+        from t_user
+        where id = #{id}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete
+        from t_user
+        where id = #{id}
+    </delete>
+
+    <insert id="insert" parameterType="com.lateautumncoder.rbauth.domain.dataobject.UserDO">
+        insert into t_user (username, create_time, update_time)
+        values (#{username}, #{createTime}, #{updateTime})
+    </insert>
+
+    <update id="updateByPrimaryKey" parameterType="com.lateautumncoder.rbauth.domain.dataobject.UserDO">
+        update t_user
+        set username    = #{username},
+            create_time = #{createTime},
+            update_time = #{updateTime}
+        where id = #{id}
+    </update>
+</mapper>

@@ -1,0 +1,25 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.lateautumncoder</groupId>
+        <artifactId>red-book</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <artifactId>rb-framework</artifactId>
+    <packaging>pom</packaging>
+
+    <name>rb-framework</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <modules>
+
+        <module>rb-common</module>
+        <module>biz-operationlog</module>
+        <module>rb-jackson</module>
+    </modules>
+</project>
