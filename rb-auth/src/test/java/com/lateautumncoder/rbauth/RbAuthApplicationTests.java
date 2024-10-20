@@ -3,11 +3,13 @@ package com.lateautumncoder.rbauth;
 import com.alibaba.druid.filter.config.ConfigTools;
 import com.lateautumncoder.rbauth.domain.dataobject.UserDO;
 import com.lateautumncoder.rbauth.domain.mapper.UserDOMapper;
+import jakarta.annotation.Resource;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.RedisTemplate;
 
 import java.time.LocalDateTime;
 
@@ -17,6 +19,10 @@ class RbAuthApplicationTests {
 
     @Autowired
     private UserDOMapper userDOMapper;
+
+    @Resource
+    private RedisTemplate<String, Object> redisTemplate;
+
 
     @Test
     void contextLoads() {
@@ -45,5 +51,10 @@ class RbAuthApplicationTests {
         String encrypt = ConfigTools.encrypt(strings[0], password);
         log.info("encrypt -> password: {}", encrypt);
     }
+    @Test
+    void testSetKeyValue() {
+        redisTemplate.opsForValue().set("name", "测试redis");
+    }
+
 
 }
