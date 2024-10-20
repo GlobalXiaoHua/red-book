@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import java.time.LocalDateTime;
 
@@ -22,6 +23,9 @@ class RbAuthApplicationTests {
 
     @Resource
     private RedisTemplate<String, Object> redisTemplate;
+
+    @Resource
+    private ThreadPoolTaskExecutor threadPoolTaskExecutor;
 
 
     @Test
@@ -54,6 +58,13 @@ class RbAuthApplicationTests {
     @Test
     void testSetKeyValue() {
         redisTemplate.opsForValue().set("name", "测试redis");
+    }
+
+    @Test
+    void ThreadPoolTaskExecutorTests() {
+        threadPoolTaskExecutor.submit(() -> {
+            log.info("异步线程");
+        });
     }
 
 
